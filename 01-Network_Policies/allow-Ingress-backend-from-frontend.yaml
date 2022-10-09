@@ -1,0 +1,17 @@
+# deny all incoming and outgoing traffic from all pods in namespace default
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: allow-Ingress-backend-from-frontend
+  namespace: default
+spec:
+  podSelector:
+    matchLabels:
+      run: backend
+  policyTypes:
+  - Ingress
+  ingress:
+    - from:
+      - podSelector:
+          matchLabels:
+            run: frontend
