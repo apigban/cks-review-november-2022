@@ -7,6 +7,7 @@ CMD ["./app"]
 
 FROM alpine:3.16.2
 RUN chmod a-w /etc
+RUN rm -rf /bin/*
 RUN addgroup -S appgroup && adduser -S appuser -G appgroup -h /home/appuser
 COPY --from=0 /app /home/appuser
 USER appuser
