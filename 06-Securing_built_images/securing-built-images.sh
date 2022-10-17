@@ -2,6 +2,9 @@
 # specify 0th stage as ubuntu focal
 # specify package golang-go to be version 1.13
 # specify built image is alpine v3.16.2, instead of using latest
+# avoid using root user
+# Remove write access to /etc directory
+# remove shell access
 docker build -t app .
 
 # use multistage Docker file, Dockerfile-small to create an image with <10MB filesize
